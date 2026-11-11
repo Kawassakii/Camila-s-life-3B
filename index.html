@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camila´s life - Organizador de Rotinas</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Three.js CDN para renderização 3D -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Canvas do Fundo 3D -->
+  <canvas id="bg-canvas"></canvas>
+
+  <header>
+    <h1 class="title-gradient">Camila´s life</h1>
+    <p class="subtitle">Organização, foco e estilo em um só lugar</p>
+  </header>
+
+  <main class="container">
+    <div class="cards-grid">
+      
+      <!-- Card Estudo -->
+      <div class="card" onclick="openModal('modal-estudo')">
+        <div>
+          <div class="card-icon">📚</div>
+          <h2 class="card-title">Estudo</h2>
+          <p class="card-summary">Escola (07:00–12:00), Mentoria de Redação (Quartas às 17:10) e Curso de Redação (Quartas às 18:00).</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-secondary" onclick="event.stopPropagation(); openModal('modal-estudo')">Resumo</button>
+          <a href="estudo.html" class="btn btn-primary" onclick="event.stopPropagation()">Acessar Página</a>
+        </div>
+      </div>
+
+      <!-- Card Lazer -->
+      <div class="card" onclick="openModal('modal-lazer')">
+        <div>
+          <div class="card-icon">📖</div>
+          <h2 class="card-title">Lazer</h2>
+          <p class="card-summary">Momentos relaxantes com leitura e culinária criativa.</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-secondary" onclick="event.stopPropagation(); openModal('modal-lazer')">Resumo</button>
+          <a href="lazer.html" class="btn btn-primary" onclick="event.stopPropagation()">Acessar Página</a>
+        </div>
+      </div>
+
+      <!-- Card Hobby -->
+      <div class="card" onclick="openModal('modal-hobby')">
+        <div>
+          <div class="card-icon">🏎️</div>
+          <h2 class="card-title">Hobby</h2>
+          <p class="card-summary">Assistir corridas de Fórmula 1 aos finais de semana.</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-secondary" onclick="event.stopPropagation(); openModal('modal-hobby')">Resumo</button>
+          <a href="hobby.html" class="btn btn-primary" onclick="event.stopPropagation()">Acessar Página</a>
+        </div>
+      </div>
+
+      <!-- Card Esportes -->
+      <div class="card" onclick="openModal('modal-esportes')">
+        <div>
+          <div class="card-icon">🎾</div>
+          <h2 class="card-title">Esportes</h2>
+          <p class="card-summary">Beach Tennis toda segunda-feira às 18:00.</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-secondary" onclick="event.stopPropagation(); openModal('modal-esportes')">Resumo</button>
+          <a href="esportes.html" class="btn btn-primary" onclick="event.stopPropagation()">Acessar Página</a>
+        </div>
+      </div>
+
+      <!-- Card Saúde -->
+      <div class="card" onclick="openModal('modal-saude')">
+        <div>
+          <div class="card-icon">💪</div>
+          <h2 class="card-title">Saúde</h2>
+          <p class="card-summary">Academia 3x na semana e rotina de dieta equilibrada.</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-secondary" onclick="event.stopPropagation(); openModal('modal-saude')">Resumo</button>
+          <a href="saude.html" class="btn btn-primary" onclick="event.stopPropagation()">Acessar Página</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modais de Informações -->
+  <div class="modal-overlay" id="modal-estudo">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('modal-estudo')">&times;</button>
+      <h3 class="modal-title">Detalhes: Estudo</h3>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Escola:</strong> Segunda a Sexta, das 07:00 às 12:00</li>
+          <li><strong>Mentoria de Redação:</strong> Quarta-feira às 17:10</li>
+          <li><strong>Curso de Redação:</strong> Quarta-feira às 18:00</li>
+        </ul>
+      </div>
+      <a href="estudo.html" class="btn btn-primary" style="width: 100%;">Ir para Página Completa</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-lazer">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('modal-lazer')">&times;</button>
+      <h3 class="modal-title">Detalhes: Lazer</h3>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Leitura:</strong> Livros da semana e desenvolvimento pessoal.</li>
+          <li><strong>Culinária:</strong> Testar novas receitas nos fins de semana.</li>
+        </ul>
+      </div>
+      <a href="lazer.html" class="btn btn-primary" style="width: 100%;">Ir para Página Completa</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-hobby">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('modal-hobby')">&times;</button>
+      <h3 class="modal-title">Detalhes: Hobby</h3>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Fórmula 1:</strong> Acompanhar treinos livres, classificações e corridas aos sábados e domingos.</li>
+          <li><strong>Paixão:</strong> Velocidade, estratégias de corrida e torcida.</li>
+        </ul>
+      </div>
+      <a href="hobby.html" class="btn btn-primary" style="width: 100%;">Ir para Página Completa</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-esportes">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('modal-esportes')">&times;</button>
+      <h3 class="modal-title">Detalhes: Esportes</h3>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Modalidade:</strong> Beach Tennis</li>
+          <li><strong>Horário:</strong> Segunda-feira às 18:00</li>
+          <li><strong>Foco:</strong> Condicionamento físico e diversão.</li>
+        </ul>
+      </div>
+      <a href="esportes.html" class="btn btn-primary" style="width: 100%;">Ir para Página Completa</a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-saude">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('modal-saude')">&times;</button>
+      <h3 class="modal-title">Detalhes: Saúde</h3>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Academia:</strong> 3 vezes por semana (Foco em musculação/cardio)</li>
+          <li><strong>Alimentação:</strong> Seguir plano de dieta diária.</li>
+          <li><strong>Hidratação:</strong> Mínimo 2L de água por dia.</li>
+        </ul>
+      </div>
+      <a href="saude.html" class="btn btn-primary" style="width: 100%;">Ir para Página Completa</a>
+    </div>
+  </div>
+
+  <!-- JavaScript Embutido -->
+  <script>
+    /* =========================================================
+       1. Controle de Modais
+       ========================================================= */
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) {
+        e.target.classList.remove('active');
+      }
+    });
+
+    /* =========================================================
+       2. Fundo 3D Interativo com Three.js (Corações e Unicórnios)
+       ========================================================= */
+    const canvas = document.getElementById('bg-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    camera.position.z = 30;
+
+    // Iluminação Tridimensional
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+
+    const pointLight1 = new THREE.PointLight(0xffdf00, 2, 100);
+    pointLight1.position.set(20, 20, 20);
+    scene.add(pointLight1);
+
+    const pointLight2 = new THREE.PointLight(0xff2a85, 2, 100);
+    pointLight2.position.set(-20, -20, 20);
+    scene.add(pointLight2);
+
+    // Formato de Coração 3D Extrudado
+    const heartShape = new THREE.Shape();
+    const x = 0, y = 0;
+    heartShape.moveTo(x + 0.5, y + 0.5);
+    heartShape.bezierCurveTo(x + 0.5, y + 0.5, x + 0.4, y, x, y);
+    heartShape.bezierCurveTo(x - 0.6, y, x - 0.6, y + 0.7, x - 0.6, y + 0.7);
+    heartShape.bezierCurveTo(x - 0.6, y + 1.1, x - 0.3, y + 1.54, x + 0.5, y + 1.9);
+    heartShape.bezierCurveTo(x + 1.3, y + 1.54, x + 1.6, y + 1.1, x + 1.6, y + 0.7);
+    heartShape.bezierCurveTo(x + 1.6, y + 0.7, x + 1.6, y, x + 1.0, y);
+    heartShape.bezierCurveTo(x + 0.7, y, x + 0.5, y + 0.5, x + 0.5, y + 0.5);
+
+    const extrudeSettings = { depth: 0.4, bevelEnabled: true, bevelSegments: 3, steps: 1, bevelSize: 0.1, bevelThickness: 0.1 };
+    const heartGeometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+    heartGeometry.center();
+
+    // Formato de Unicórnio 3D
+    const unicornGroupBase = new THREE.Group();
+    const coneGeo = new THREE.ConeGeometry(0.5, 2, 16);
+    const sphereGeo = new THREE.SphereGeometry(0.7, 16, 16);
+
+    const goldMat = new THREE.MeshPhongMaterial({ color: 0xffdf00, shininess: 100 });
+    const pinkMat = new THREE.MeshPhongMaterial({ color: 0xff2a85, shininess: 100 });
+
+    const coneMesh = new THREE.Mesh(coneGeo, goldMat);
+    coneMesh.position.y = 0.8;
+    const sphereMesh = new THREE.Mesh(sphereGeo, pinkMat);
+
+    unicornGroupBase.add(coneMesh);
+    unicornGroupBase.add(sphereMesh);
+
+    // Materiais Amarelo e Rosa
+    const materials = [
+      new THREE.MeshPhongMaterial({ color: 0xffdf00, shininess: 90, specular: 0xffffff }),
+      new THREE.MeshPhongMaterial({ color: 0xff2a85, shininess: 90, specular: 0xffffff }),
+      new THREE.MeshPhongMaterial({ color: 0xe0115f, shininess: 90, specular: 0xffffff })
+    ];
+
+    const floatingObjects = [];
+    const count = 35;
+
+    for (let i = 0; i < count; i++) {
+      let obj;
+      const mat = materials[Math.floor(Math.random() * materials.length)];
+
+      if (Math.random() > 0.4) {
+        obj = new THREE.Mesh(heartGeometry, mat);
+        const scale = Math.random() * 0.8 + 0.5;
+        obj.scale.set(scale, scale, scale);
+      } else {
+        obj = unicornGroupBase.clone();
+        const scale = Math.random() * 0.7 + 0.5;
+        obj.scale.set(scale, scale, scale);
+      }
+
+      obj.position.x = (Math.random() - 0.5) * 60;
+      obj.position.y = (Math.random() - 0.5) * 60;
+      obj.position.z = (Math.random() - 0.5) * 40;
+
+      obj.userData = {
+        rotSpeedX: (Math.random() - 0.5) * 0.02,
+        rotSpeedY: (Math.random() - 0.5) * 0.02,
+        floatSpeed: Math.random() * 0.015 + 0.005,
+        offset: Math.random() * Math.PI * 2
+      };
+
+      scene.add(obj);
+      floatingObjects.push(obj);
+    }
+
+    let clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      floatingObjects.forEach((obj) => {
+        obj.rotation.x += obj.userData.rotSpeedX;
+        obj.rotation.y += obj.userData.rotSpeedY;
+
+        obj.position.y += Math.sin(elapsedTime + obj.userData.offset) * 0.02;
+        obj.position.x += Math.cos(elapsedTime + obj.userData.offset) * 0.01;
+      });
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>

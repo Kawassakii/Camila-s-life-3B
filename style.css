@@ -1,0 +1,265 @@
+/* =========================================================
+   Camila's Life - Estilos Principais (3D Glassmorphism & Gradient)
+   ========================================================= */
+
+:root {
+  --primary-yellow: #ffdf00;
+  --primary-pink: #ff2a85;
+  --accent-magenta: #e0115f;
+  --bg-dark: #0a0a0c;
+  --card-bg: rgba(22, 22, 30, 0.75);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text-main: #ffffff;
+  --text-muted: #b3b3c5;
+  --gradient-brand: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-pink) 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(255, 223, 0, 0.3) 0%, rgba(255, 42, 133, 0.3) 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Canvas 3D de Fundo */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Header & Título */
+header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 50px 20px 20px;
+}
+
+.title-gradient {
+  font-size: 3.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(255, 42, 133, 0.3);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+/* Layout dos Cards */
+main.container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  perspective: 1000px;
+}
+
+/* Card 3D Estilizado */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 30px 25px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-12px) rotateX(4deg) rotateY(-4deg);
+  border-color: rgba(255, 223, 0, 0.4);
+  box-shadow: 0 25px 45px rgba(255, 42, 133, 0.25), 0 0 20px rgba(255, 223, 0, 0.2);
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.card-summary {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--gradient-brand);
+  color: #0a0a0c;
+  box-shadow: 0 4px 15px rgba(255, 42, 133, 0.3);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-container {
+  background: #121218;
+  border: 1px solid rgba(255, 223, 0, 0.3);
+  border-radius: 24px;
+  width: 90%;
+  max-width: 500px;
+  padding: 35px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(255, 42, 133, 0.3);
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--primary-pink);
+}
+
+.modal-title {
+  font-size: 2rem;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+}
+
+.modal-body {
+  color: #d1d1e0;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.modal-body ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.modal-body li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.modal-body li::before {
+  content: "✦";
+  color: var(--primary-yellow);
+  position: absolute;
+  left: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .title-gradient {
+    font-size: 2.6rem;
+  }
+}
